@@ -840,7 +840,8 @@ MonoBehaviour:
   candyHightLow: -3.5
   candyHightHigh: 0
   spawnWaitTime: 1
-  candies: []
+  candySpawnXPosition: 12
+  candyMoveSpeed: 7
 --- !u!1 &934378201
 GameObject:
   m_ObjectHideFlags: 0

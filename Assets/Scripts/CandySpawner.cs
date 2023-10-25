@@ -8,10 +8,15 @@ public class CandySpawner : MonoBehaviour
     [SerializeField] private float candyHightLow;
     [SerializeField] private float candyHightHigh;
     [SerializeField] private float spawnWaitTime;
+    [SerializeField] private float candySpawnXPosition;
 
-    [SerializeField] private List<GameObject> candies;
-
+    [SerializeField] public float candyMoveSpeed;
     public static CandySpawner Instance;
+
+    private List<GameObject> candies;
+
+
+    public float MusicStartDelay { private set; get; }
 
     private void Awake()
     {
@@ -27,7 +32,9 @@ public class CandySpawner : MonoBehaviour
     {
         candies = new List<GameObject>();
         StartCoroutine(SpawnCandies());
+        MusicStartDelay = candySpawnXPosition / candyMoveSpeed;
     }
+
     IEnumerator SpawnCandies()
     {
         while (true)
@@ -42,7 +49,7 @@ public class CandySpawner : MonoBehaviour
         int lineNumber = Random.Range(0, 2);
         bool isGrounded = lineNumber == 0;
         float y = isGrounded ? candyHightLow : candyHightHigh;
-        candy.transform.position = new Vector2(12, y);
+        candy.transform.position = new Vector2(candySpawnXPosition, y);
         CandyScript candyScript = candy.GetComponent<CandyScript>();
         candyScript.IsGrounded = isGrounded;
         candies.Add(candy);

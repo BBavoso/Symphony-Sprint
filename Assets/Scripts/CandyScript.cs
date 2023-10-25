@@ -6,15 +6,22 @@ using TMPro;
 
 public class CandyScript : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
+    private float moveSpeed;
 
     public bool IsGrounded { set; get; }
+
+
+    private void Start()
+    {
+        moveSpeed = CandySpawner.Instance.candyMoveSpeed;
+    }
     void Update()
     {
         transform.position = (Vector2)transform.position + moveSpeed * Time.deltaTime * Vector2.left;
 
         CheckDesroy();
     }
+
 
     private void CheckDesroy()
     {
