@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
     {
         float xDistanceToPlayer = candyScript.XDistanceToPlayer();
         CandyScript.CandyHitType candyHitType = CandyScript.DistanceToHitType(xDistanceToPlayer);
-        Debug.Log($"hit was {xDistanceToPlayer} away and was a {candyHitType}");
+        // Debug.Log($"hit was {xDistanceToPlayer} away and was a {candyHitType}");
         CreateHitText(candyHitType);
         CandySpawner.Instance.DestroyCandy(candyScript.gameObject);
     }
