@@ -6,17 +6,20 @@ using System;
 
 public class ScoreTextScript : MonoBehaviour
 {
-    // [SerializeField] PlayerScript player;
-    // TextMeshProUGUI gui;
-    // private void Start()
-    // {
-    //     gui = GetComponent<TextMeshProUGUI>();
-    //     gui.text = "0";
-    //     player.OnScoreChange += Player_OnScoreChange;
-    // }
+    [SerializeField] private TMP_Text misses;
+    [SerializeField] private TMP_Text goodHits;
+    [SerializeField] private TMP_Text perfectHits;
 
-    // private void Player_OnScoreChange(object sender, int score)
-    // {
-    //     gui.text = score.ToString();
-    // }
+    private Player.Score playerScore;
+
+    private void Start()
+    {
+        playerScore = Player.Instance.PlayerScore;
+    }
+    private void Update()
+    {
+        misses.text = $"Miss: {playerScore.misses}";
+        goodHits.text = $"Good: {playerScore.goodHits}";
+        perfectHits.text = $"Perfect: {playerScore.perfectHits}";
+    }
 }

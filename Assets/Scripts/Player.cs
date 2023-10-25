@@ -5,13 +5,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [HideInInspector] public int Score { private set; get; }
+    [HideInInspector] public Score PlayerScore { private set; get; }
 
     [SerializeField] private GameObject hitTextPrefab;
 
     public static Player Instance { private set; get; }
 
     private bool isGrounded;
+
+    public class Score
+    {
+        public int misses;
+        public int goodHits;
+        public int perfectHits;
+
+        public Score()
+        {
+            this.misses = 0;
+            this.goodHits = 0;
+            this.perfectHits = 0;
+        }
+    }
 
     private void Awake()
     {
@@ -21,6 +35,7 @@ public class Player : MonoBehaviour
             return;
         }
         Instance = this;
+        PlayerScore = new Score();
     }
 
     private void Start()
@@ -58,7 +73,7 @@ public class Player : MonoBehaviour
             isGrounded = true;
             if (CheckForHits(out CandyScript candyScript))
             {
-                DestroyOnHit(candyScript);
+                HandleSuccessfulHit(candyScript);
             }
             return;
 
@@ -69,24 +84,42 @@ public class Player : MonoBehaviour
             isGrounded = false;
             if (CheckForHits(out CandyScript candyScript))
             {
-                DestroyOnHit(candyScript);
+                HandleSuccessfulHit(candyScript);
             }
         }
     }
 
-    private void DestroyOnHit(CandyScript candyScript)
+    private void HandleSuccessfulHit(CandyScript candyScript)
     {
         float xDistanceToPlayer = candyScript.XDistanceToPlayer();
         CandyScript.CandyHitType candyHitType = CandyScript.DistanceToHitType(xDistanceToPlayer);
+        UpdateScoreBoard(candyHitType);
         // Debug.Log($"hit was {xDistanceToPlayer} away and was a {candyHitType}");
         CreateHitText(candyHitType);
         CandySpawner.Instance.DestroyCandy(candyScript.gameObject);
     }
 
+    public void UpdateScoreBoard(CandyScript.CandyHitType candyHitType)
+    {
+        switch (candyHitType)
+        {
+            case CandyScript.CandyHitType.Perfect:
+                PlayerScore.perfectHits += 1;
+                break;
+            case CandyScript.CandyHitType.Good:
+                PlayerScore.goodHits += 1;
+                break;
+            case CandyScript.CandyHitType.Miss:
+                PlayerScore.misses += 1;
+                break;
+        }
+    }
+
     private void CreateHitText(CandyScript.CandyHitType candyHitType)
     {
         GameObject hitText = Instantiate(hitTextPrefab);
-        hitText.transform.position = new Vector2(0, 2);
+        float hitTextYPosition = isGrounded ? -2.5f : 1.5f;
+        hitText.transform.position = new Vector2(0, hitTextYPosition);
         HitTextScript hitTextScript = hitText.GetComponent<HitTextScript>();
         hitTextScript.StartHitText(candyHitType);
     }

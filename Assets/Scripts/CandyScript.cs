@@ -9,7 +9,6 @@ public class CandyScript : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     public bool IsGrounded { set; get; }
-
     void Update()
     {
         transform.position = (Vector2)transform.position + moveSpeed * Time.deltaTime * Vector2.left;
@@ -21,6 +20,7 @@ public class CandyScript : MonoBehaviour
     {
         if (transform.position.x <= -5)
         {
+            Player.Instance.UpdateScoreBoard(CandyHitType.Miss);
             CandySpawner.Instance.DestroyCandy(gameObject);
         }
     }
