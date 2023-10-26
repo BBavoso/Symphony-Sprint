@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:IMGUIContainer style="height: 186px; flex-direction: row;">
+        <ui:ListView focusable="true" name="SongList" style="width: 50%;" />
+        <ui:ListView focusable="true" name="MeasureList" style="width: 50%;" />
+    </ui:IMGUIContainer>
+    <ui:IMGUIContainer name="SongFields" style="height: auto; display: flex; visibility: visible;">
+        <ui:IntegerField label="BPM" value="42" readonly="false" name="BeatsPerMinute" style="height: 18px;" />
+        <ui:IMGUIContainer name="MeasureControls" style="flex-direction: row; width: auto; margin-top: 3px; margin-right: 3px; margin-bottom: 3px; margin-left: 3px;">
+            <ui:IntegerField label="Measures" value="42" name="TotalMeasures" readonly="true" focusable="false" style="width: 75%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; opacity: 0.74;" />
+            <ui:IMGUIContainer name="ButtonContainer" style="flex-direction: row; width: 25%;">
+                <ui:Button text="-" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MeasuresDecrease" style="width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                <ui:Button text="+" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MeasuresIncrease" style="width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+            </ui:IMGUIContainer>
+        </ui:IMGUIContainer>
+    </ui:IMGUIContainer>
+    <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" name="MeasureEditor" vertical-scroller-visibility="Hidden" style="height: 92px; align-items: auto; justify-content: space-between; flex-direction: row;">
+        <ui:IMGUIContainer name="BeatsContainer" style="min-width: 100%; flex-direction: row; justify-content: center; height: 87px;" />
+    </ui:ScrollView>
+</ui:UXML>

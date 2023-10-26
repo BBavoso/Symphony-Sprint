@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Template name="NoteEditor" src="project://database/Assets/Editor/NoteEditor.uxml?fileID=9197481963319205126&amp;guid=3f69ddd933a214e538eeaae879455efa&amp;type=3#NoteEditor" />
+    <ui:VisualElement name="BeatContainer" style="flex-grow: 1; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; height: 81px; max-height: none;">
+        <ui:Label tabindex="-1" text="Beat #" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BeatLabel" style="-unity-text-align: upper-center;" />
+        <ui:VisualElement style="flex-grow: 1; min-width: auto; min-height: 18px; flex-direction: row; justify-content: center; height: 60px;">
+            <ui:IMGUIContainer name="NotesContainer" style="flex-direction: row; justify-content: space-between; min-width: 0; width: 100px; align-self: auto;">
+                <ui:Instance template="NoteEditor" name="NoteEditor" />
+                <ui:Instance template="NoteEditor" name="NoteEditor" />
+                <ui:Instance template="NoteEditor" name="NoteEditor" />
+                <ui:Instance template="NoteEditor" name="NoteEditor" />
+            </ui:IMGUIContainer>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
