@@ -7,4 +7,5 @@ public class SongSO : ScriptableObject
 {
     public List<BeatHolder.Measure> measures;
     public int BPM;
+    public AudioClip songAudio;
 }

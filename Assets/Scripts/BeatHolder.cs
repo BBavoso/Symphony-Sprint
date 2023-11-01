@@ -10,21 +10,55 @@ public class BeatHolder : MonoBehaviour
     // ***********************************************
     [SerializeField] private SongSO songSO;
 
+    public SongSO GetSong()
+    {
+        return songSO;
+    }
+
+    public static BeatHolder Instance { get; private set; }
+
+
     private Queue<Measure> measures;
 
+    private void Start()
+    {
+    }
 
+    // ***********************************************
+    // Instance
+    // ***********************************************
+
+    private void Awake()
+    {
+        SetInstance();
+        measures = new Queue<Measure>(songSO.measures);
+    }
+    private void SetInstance()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("BeatHolder already has an instance!!!");
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     // ***********************************************
     // Beat Holder Functionality
     // ***********************************************
 
-    private void Start()
+    public bool GetNextMeasure(out Measure measure)
     {
-        measures = new Queue<Measure>(songSO.measures);
+        if (measures.Count == 0)
+        {
+            measure = CreateNewMeasureOfFour();
+            return false;
+        }
+        measure = measures.Dequeue();
+        return true;
     }
-
-
-
 
 
     // ***********************************************
