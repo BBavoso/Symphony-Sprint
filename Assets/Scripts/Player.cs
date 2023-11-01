@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +14,10 @@ public class Player : MonoBehaviour
     public static Player Instance { private set; get; }
 
     private bool isGrounded;
+
+    public static KeyCode hitKey = KeyCode.F;
+
+    public static KeyCode jumpKey = KeyCode.J;
 
     public class Score
     {
@@ -63,11 +69,11 @@ public class Player : MonoBehaviour
 
     private void HandleHitSystem()
     {
-        if (!Input.GetKeyDown(KeyCode.F) && !Input.GetKeyDown(KeyCode.J))
+        if (!Input.GetKeyDown(hitKey) && !Input.GetKeyDown(jumpKey))
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(hitKey))
         {
             transform.position = new Vector2(0, -3.5f);
             isGrounded = true;
@@ -78,7 +84,7 @@ public class Player : MonoBehaviour
             return;
 
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(jumpKey))
         {
             transform.position = new Vector2(0, 0);
             isGrounded = false;
@@ -122,5 +128,10 @@ public class Player : MonoBehaviour
         hitText.transform.position = new Vector2(0, hitTextYPosition);
         HitTextScript hitTextScript = hitText.GetComponent<HitTextScript>();
         hitTextScript.StartHitText(candyHitType);
+    }
+
+    public static KeyCode[] GetControls() {
+        KeyCode[] controls = {hitKey, jumpKey};
+        return controls; 
     }
 }

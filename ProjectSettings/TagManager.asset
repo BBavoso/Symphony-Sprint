@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Item
+  - ControlPopup
+  - HitInput
+  - JumpInput
+  - KeyMessage
   layers:
   - Default
   - TransparentFX
