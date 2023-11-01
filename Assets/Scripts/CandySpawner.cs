@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,16 +8,19 @@ public class CandySpawner : MonoBehaviour
     [SerializeField] private GameObject candyPrefab;
     [SerializeField] private float candyHightLow;
     [SerializeField] private float candyHightHigh;
-    [SerializeField] private float spawnWaitTime;
     [SerializeField] private float candySpawnXPosition;
-
     [SerializeField] public float candyMoveSpeed;
     public static CandySpawner Instance;
 
     private List<GameObject> candies;
 
+    private AudioSource songAudioSource;
+    private SongSO currentSong;
 
-    public float MusicStartDelay { private set; get; }
+    // private bool songFinished;
+
+
+    private float musicStartDelay;
 
     private void Awake()
     {
@@ -31,23 +35,55 @@ public class CandySpawner : MonoBehaviour
     private void Start()
     {
         candies = new List<GameObject>();
+        musicStartDelay = candySpawnXPosition / candyMoveSpeed;
+
+        // Setup Audio
+        // songFinished = false;
+        currentSong = BeatHolder.Instance.GetSong();
+
+        songAudioSource = GetComponent<AudioSource>();
+        songAudioSource.clip = currentSong.songAudio;
+
+        // Start Coroutines
         StartCoroutine(SpawnCandies());
-        MusicStartDelay = candySpawnXPosition / candyMoveSpeed;
+        StartCoroutine(StartMusic());
     }
 
     IEnumerator SpawnCandies()
     {
-        while (true)
+        // Loop Measures
+        while (BeatHolder.Instance.GetNextMeasure(out BeatHolder.Measure measure))
         {
-            SpawnCandy();
-            yield return new WaitForSeconds(spawnWaitTime);
+            Queue<BeatHolder.Beat> beats = new(measure.beats);
+            // Loop Beats
+            while (beats.Count > 0)
+            {
+                BeatHolder.Beat beat = beats.Dequeue();
+                Queue<BeatHolder.Note> notes = new(beat.notes);
+                float timeBetweenNotes = 60f / (currentSong.BPM * notes.Count);
+                // Loop Notes
+                while (notes.Count > 0)
+                {
+                    BeatHolder.Note note = notes.Dequeue();
+                    if (note.playNote)
+                    {
+                        SpawnCandy(note.isGrounded);
+                    }
+                    yield return new WaitForSeconds(timeBetweenNotes);
+                }
+            }
         }
     }
-    private void SpawnCandy()
+
+    IEnumerator StartMusic()
+    {
+        yield return new WaitForSeconds(musicStartDelay);
+        songAudioSource.Play();
+
+    }
+    private void SpawnCandy(bool isGrounded)
     {
         GameObject candy = Instantiate(candyPrefab);
-        int lineNumber = Random.Range(0, 2);
-        bool isGrounded = lineNumber == 0;
         float y = isGrounded ? candyHightLow : candyHightHigh;
         candy.transform.position = new Vector2(candySpawnXPosition, y);
         CandyScript candyScript = candy.GetComponent<CandyScript>();
