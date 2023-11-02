@@ -15,8 +15,8 @@ namespace PauseMenuScript
         }
         public void Resume()
         {
-            pauseMenu.setActive(false);
-            Time.timeSacle 1f;
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
         }
         public void Home(int sceneID)
         {
