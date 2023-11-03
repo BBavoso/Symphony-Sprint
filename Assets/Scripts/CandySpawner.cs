@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CandySpawner : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class CandySpawner : MonoBehaviour
     [SerializeField] private float candyHightHigh;
     [SerializeField] private float candySpawnXPosition;
     [SerializeField] public float candyMoveSpeed;
+
+    [SerializeField] public Button resumeButton;
     public static CandySpawner Instance;
 
 
@@ -50,6 +54,18 @@ public class CandySpawner : MonoBehaviour
         StartCoroutine(StartMusic());
 
 
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            songAudioSource.Pause();
+            resumeButton.onClick.AddListener(Resume);
+        }
+    }
+
+    private void Resume() {
+        songAudioSource.UnPause();
     }
 
     IEnumerator SpawnCandies()
