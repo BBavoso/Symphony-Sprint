@@ -1271,6 +1271,7 @@ MonoBehaviour:
   candyHightHigh: 0
   candySpawnXPosition: 12
   candyMoveSpeed: 7
+  resumeButton: {fileID: 378550692}
 --- !u!82 &895847916
 AudioSource:
   m_ObjectHideFlags: 0
