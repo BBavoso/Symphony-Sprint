@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,4 +9,6 @@ public class SongSO : ScriptableObject
     public List<BeatHolder.Measure> measures;
     public int BPM;
     public AudioClip songAudio;
+
+
 }
