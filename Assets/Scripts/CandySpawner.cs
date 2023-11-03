@@ -75,7 +75,7 @@ public class CandySpawner : MonoBehaviour
         if (noteTimer <= 0)
         {
             noteTimer = 1 / 8f;
-            if (currentNote < notes.Length)
+            if (currentNote < notes.Length - 1)
             {
                 currentNote++;
                 if (notes[currentNote].playNote)

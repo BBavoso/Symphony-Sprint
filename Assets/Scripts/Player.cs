@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject hitTextPrefab;
 
+    [SerializeField] public Animator anim;
+
     public static Player Instance { private set; get; }
 
     private bool isGrounded;
@@ -101,8 +103,8 @@ public class Player : MonoBehaviour
             {
                 HandleSuccessfulHit(candyScript);
             }
+            anim.SetBool("hit", true);
             return;
-
         }
         if (Input.GetKeyDown(jumpKey))
         {
