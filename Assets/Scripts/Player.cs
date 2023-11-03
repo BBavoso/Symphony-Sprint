@@ -103,8 +103,7 @@ public class Player : MonoBehaviour
             {
                 HandleSuccessfulHit(candyScript);
             }
-            anim.SetBool("hit", true);
-            return;
+        
         }
         if (Input.GetKeyDown(jumpKey))
         {
@@ -114,8 +113,10 @@ public class Player : MonoBehaviour
             {
                 HandleSuccessfulHit(candyScript);
             }
+        
         }
     }
+
 
     private void HandleSuccessfulHit(CandyScript candyScript)
     {
