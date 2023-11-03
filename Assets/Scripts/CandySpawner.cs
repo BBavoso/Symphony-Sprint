@@ -12,6 +12,7 @@ public class CandySpawner : MonoBehaviour
     [SerializeField] public float candyMoveSpeed;
     public static CandySpawner Instance;
 
+
     private List<GameObject> candies;
 
     private AudioSource songAudioSource;
@@ -47,6 +48,8 @@ public class CandySpawner : MonoBehaviour
         // Start Coroutines
         StartCoroutine(SpawnCandies());
         StartCoroutine(StartMusic());
+
+
     }
 
     IEnumerator SpawnCandies()
