@@ -13,7 +13,7 @@ public class CutScene : MonoBehaviour
 
     IEnumerator TransitionScene()
     {
-        yield return new WaitForSeconds(33.6f);
+        yield return new WaitForSeconds(29.0f);
 
 
         SceneManager.LoadScene("FirstLevel");
