@@ -56,7 +56,27 @@ public class Player : MonoBehaviour
 
     private bool CheckForHits(out CandyScript candyScript)
     {
-        GameObject closestCandy = CandySpawner.Instance.FindNearestCandyToPlayerInLane(isGrounded);
+        // GameObject closestCandy = CandySpawner.Instance.FindNearestCandyToPlayerInLane(isGrounded);
+
+        GameObject[] candies = GameObject.FindGameObjectsWithTag("Item");
+        CandyScript closestCandy = null;
+        foreach (var candy in candies)
+        {
+            var candyGameObjectScript = candy.GetComponent<CandyScript>();
+
+            if (candyGameObjectScript.IsGrounded == isGrounded)
+            {
+                if (closestCandy == null)
+                {
+                    closestCandy = candyGameObjectScript;
+                }
+                else
+                {
+                    closestCandy = closestCandy.XDistanceToPlayer() > candyGameObjectScript.XDistanceToPlayer() ? candyGameObjectScript : closestCandy;
+                }
+            }
+        }
+
         if (closestCandy == null)
         {
             candyScript = null;
@@ -102,7 +122,8 @@ public class Player : MonoBehaviour
         UpdateScoreBoard(candyHitType);
         // Debug.Log($"hit was {xDistanceToPlayer} away and was a {candyHitType}");
         CreateHitText(candyHitType);
-        CandySpawner.Instance.DestroyCandy(candyScript.gameObject);
+        Destroy(candyScript.gameObject);
+        // CandySpawner.Instance.DestroyCandy(candyScript.gameObject);
     }
 
     public void UpdateScoreBoard(CandyScript.CandyHitType candyHitType)
@@ -130,8 +151,9 @@ public class Player : MonoBehaviour
         hitTextScript.StartHitText(candyHitType);
     }
 
-    public static KeyCode[] GetControls() {
-        KeyCode[] controls = {hitKey, jumpKey};
-        return controls; 
+    public static KeyCode[] GetControls()
+    {
+        KeyCode[] controls = { hitKey, jumpKey };
+        return controls;
     }
 }

@@ -17,7 +17,9 @@ public class CandySpawner : MonoBehaviour
     public static CandySpawner Instance;
 
 
-    private float measureTimer;
+    private float noteTimer;
+    private int currentNote;
+    private BeatHolder.Note[] notes;
 
     private List<GameObject> candies;
 
@@ -43,7 +45,8 @@ public class CandySpawner : MonoBehaviour
     {
         candies = new List<GameObject>();
         musicStartDelay = (candySpawnXPosition / candyMoveSpeed);
-        measureTimer = 0f;
+
+
 
         // Setup Audio
         // songFinished = false;
@@ -52,26 +55,35 @@ public class CandySpawner : MonoBehaviour
         songAudioSource = GetComponent<AudioSource>();
         songAudioSource.clip = currentSong.songAudio;
 
+        noteTimer = 0f;
+        currentNote = 0;
+        notes = CreateNotes().ToArray();
+
         // Start Coroutines
         StartCoroutine(StartMusic());
 
-        StartCoroutine(SpawnCandies());
+
+
+
+
     }
 
     public void Update()
     {
-        measureTimer -= Time.deltaTime;
+        noteTimer -= Time.deltaTime;
 
-        // Right now this makes it only work for 4/4
-        // todo: change this to work with all time signatures
-
-        // float timeUntilNextMeasure = (4 * 60) / currentSong.BPM;
-
-        // if (measureTimer <= 0 && BeatHolder.Instance.GetNextMeasure(out BeatHolder.Measure measure))
-        // {
-        //     StartCoroutine(SpawnMeasureOfCandies(measure));
-        //     measureTimer = timeUntilNextMeasure;
-        // }
+        if (noteTimer <= 0)
+        {
+            noteTimer = 1 / 8f;
+            if (currentNote < notes.Length)
+            {
+                currentNote++;
+                if (notes[currentNote].playNote)
+                {
+                    SpawnCandy(notes[currentNote].isGrounded);
+                }
+            }
+        }
 
 
 
