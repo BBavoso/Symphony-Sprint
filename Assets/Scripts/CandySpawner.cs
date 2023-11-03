@@ -17,6 +17,10 @@ public class CandySpawner : MonoBehaviour
     public static CandySpawner Instance;
 
 
+    private float noteTimer;
+    private int currentNote;
+    private BeatHolder.Note[] notes;
+
     private List<GameObject> candies;
 
     private AudioSource songAudioSource;
@@ -40,7 +44,9 @@ public class CandySpawner : MonoBehaviour
     private void Start()
     {
         candies = new List<GameObject>();
-        musicStartDelay = candySpawnXPosition / candyMoveSpeed;
+        musicStartDelay = (candySpawnXPosition / candyMoveSpeed);
+
+
 
         // Setup Audio
         // songFinished = false;
@@ -49,48 +55,84 @@ public class CandySpawner : MonoBehaviour
         songAudioSource = GetComponent<AudioSource>();
         songAudioSource.clip = currentSong.songAudio;
 
+        noteTimer = 0f;
+        currentNote = 0;
+        notes = CreateNotes().ToArray();
+
         // Start Coroutines
-        StartCoroutine(SpawnCandies());
         StartCoroutine(StartMusic());
+
+
+
 
 
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        noteTimer -= Time.deltaTime;
+
+        if (noteTimer <= 0)
+        {
+            noteTimer = 1 / 8f;
+            if (currentNote < notes.Length)
+            {
+                currentNote++;
+                if (notes[currentNote].playNote)
+                {
+                    SpawnCandy(notes[currentNote].isGrounded);
+                }
+            }
+        }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
             songAudioSource.Pause();
             resumeButton.onClick.AddListener(Resume);
         }
     }
 
-    private void Resume() {
+    List<BeatHolder.Note> CreateNotes()
+    {
+        var result = new List<BeatHolder.Note>();
+
+        foreach (BeatHolder.Measure measure in currentSong.measures)
+        {
+            foreach (BeatHolder.Beat beat in measure.beats)
+            {
+                foreach (BeatHolder.Note note in beat.notes)
+                {
+                    result.Add(note);
+                }
+            }
+        }
+
+
+        return result;
+    }
+
+    private void Resume()
+    {
         songAudioSource.UnPause();
     }
 
     IEnumerator SpawnCandies()
     {
         // Loop Measures
-        while (BeatHolder.Instance.GetNextMeasure(out BeatHolder.Measure measure))
+        var notes = CreateNotes();
+        foreach (BeatHolder.Note note in notes)
         {
-            Queue<BeatHolder.Beat> beats = new(measure.beats);
-            // Loop Beats
-            while (beats.Count > 0)
+            float timeBetweenNotes = 1 / 8f;
+            if (note.playNote)
             {
-                BeatHolder.Beat beat = beats.Dequeue();
-                Queue<BeatHolder.Note> notes = new(beat.notes);
-                float timeBetweenNotes = 60f / (currentSong.BPM * notes.Count);
-                // Loop Notes
-                while (notes.Count > 0)
-                {
-                    BeatHolder.Note note = notes.Dequeue();
-                    if (note.playNote)
-                    {
-                        SpawnCandy(note.isGrounded);
-                    }
-                    yield return new WaitForSeconds(timeBetweenNotes);
-                }
+                SpawnCandy(note.isGrounded);
             }
+
+
+            yield return new WaitForSeconds(timeBetweenNotes);
+
         }
     }
 

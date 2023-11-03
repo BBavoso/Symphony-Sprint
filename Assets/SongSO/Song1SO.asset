@@ -12,6 +12,487 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ccd87d50e9e488c979a314c7cea84b, type: 3}
   m_Name: Song1SO
   m_EditorClassIdentifier: 
-  measures: []
-  BPM: 120
-  songAudio: {fileID: 0}
+  measures:
+  - beats:
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  - beats:
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 0
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+    - notes:
+      - playNote: 1
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+      - playNote: 0
+        isGrounded: 1
+  BPM: 150
+  songAudio: {fileID: 8300000, guid: 957c1a2b641d263418911dde48654dce, type: 3}
