@@ -28,7 +28,8 @@ public class CandyScript : MonoBehaviour
         if (transform.position.x <= -5)
         {
             Player.Instance.UpdateScoreBoard(CandyHitType.Miss);
-            CandySpawner.Instance.DestroyCandy(gameObject);
+            Destroy(gameObject);
+            // CandySpawner.Instance.DestroyCandy(gameObject);
         }
     }
 
