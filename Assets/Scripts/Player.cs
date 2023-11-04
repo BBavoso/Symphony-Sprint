@@ -91,33 +91,36 @@ public class Player : MonoBehaviour
 
     private void HandleHitSystem()
     {
-        if (!Input.GetKeyDown(hitKey) && !Input.GetKeyDown(jumpKey))
-        {
-            return;
-        }
         if (Input.GetKeyDown(hitKey))
         {
-            transform.position = new Vector2(0, -3.5f);
+            transform.position = new Vector2(0, -3);
             isGrounded = true;
             if (CheckForHits(out CandyScript candyScript))
             {
                 HandleSuccessfulHit(candyScript);
             }
-        
+            anim.SetBool("kick", true);
+        }
+        if (Input.GetKeyUp(hitKey)) {
+            anim.SetBool("kick", false);
         }
         if (Input.GetKeyDown(jumpKey))
         {
-            transform.position = new Vector2(0, 0);
+            
+            anim.SetBool("jump", true);
+            transform.position = new Vector2(0, 1);
             isGrounded = false;
             if (CheckForHits(out CandyScript candyScript))
             {
                 HandleSuccessfulHit(candyScript);
             }
-        
+        }
+        if (Input.GetKeyUp(jumpKey)) {
+            anim.SetBool("jump", false);
         }
     }
 
-
+    
     private void HandleSuccessfulHit(CandyScript candyScript)
     {
         float xDistanceToPlayer = candyScript.XDistanceToPlayer();
